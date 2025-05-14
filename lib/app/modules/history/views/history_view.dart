@@ -9,43 +9,69 @@ class HistoryView extends StatelessWidget {
     required String title,
     required String subtitle,
     required String time,
+    bool isTransaction = false,
   }) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(0),
       decoration: BoxDecoration(
         color: const Color(0xFF7B9BCF),
         borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, size: 28, color: Colors.white),
-          const SizedBox(width: 12),
+          Container(
+            padding: const EdgeInsets.all(12),
+            margin: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Icon(icon, size: 24, color: Colors.black),
+          ),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(height: 16),
                 Text(
                   title,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
+                    fontSize: 16,
                     color: Colors.white,
                   ),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   subtitle,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white, fontSize: 14),
                 ),
+                if (isTransaction)
+                  Text(
+                    "Groceries | Pantry | -\$100,00",
+                    style: TextStyle(color: Colors.blue[200], fontSize: 14),
+                  ),
+                const SizedBox(height: 16),
               ],
             ),
           ),
-          Text(
-            time,
-            style: const TextStyle(
-              fontSize: 12,
-              color: Color(0xFFDCEBFF),
+          Padding(
+            padding: const EdgeInsets.only(top: 16, right: 16),
+            child: Text(
+              time,
+              style: const TextStyle(
+                fontSize: 12,
+                color: Color(0xFFDCEBFF),
+              ),
             ),
           ),
         ],
@@ -71,7 +97,7 @@ class HistoryView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFEFFFF5),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -95,42 +121,38 @@ class HistoryView extends StatelessWidget {
           children: [
             _buildSection("Today", [
               _buildHistoryItem(
-                icon: Icons.notifications_active_outlined,
+                icon: Icons.notifications_outlined,
                 title: "Reminder!",
-                subtitle:
-                    "Set up your automatic savings to meet your savings goal…",
+                subtitle: "Set up your automatic savings to meet your savings goal...",
                 time: "17:00 – April 24",
               ),
               _buildHistoryItem(
-                icon: Icons.system_update_alt_outlined,
+                icon: Icons.notifications_outlined,
                 title: "New Update",
-                subtitle:
-                    "Set up your automatic savings to meet your savings goal…",
+                subtitle: "Set up your automatic savings to meet your savings goal...",
                 time: "17:00 – April 24",
               ),
             ]),
             _buildSection("Yesterday", [
               _buildHistoryItem(
-                icon: Icons.attach_money_outlined,
+                icon: Icons.notifications_outlined,
                 title: "Transactions",
-                subtitle:
-                    "A new transaction has been registered\nGroceries | Pantry | -\$100,00",
+                subtitle: "A new transaction has been registered",
                 time: "17:00 – April 24",
+                isTransaction: true,
               ),
               _buildHistoryItem(
-                icon: Icons.notifications_active_outlined,
+                icon: Icons.notifications_outlined,
                 title: "Reminder!",
-                subtitle:
-                    "Set up your automatic savings to meet your savings goal…",
+                subtitle: "Set up your automatic savings to meet your savings goal...",
                 time: "17:00 – April 24",
               ),
             ]),
             _buildSection("This Weekend", [
               _buildHistoryItem(
-                icon: Icons.receipt_long_outlined,
+                icon: Icons.notifications_outlined,
                 title: "Expense Record",
-                subtitle:
-                    "We recommend that you be more attentive to your finances.",
+                subtitle: "We recommend that you be more attentive to your finances.",
                 time: "17:00 – April 24",
               ),
             ]),
@@ -138,13 +160,32 @@ class HistoryView extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 1, // index untuk Riwayat
-        type: BottomNavigationBarType.fixed,
+        currentIndex: 1,
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.grey,
+        type: BottomNavigationBarType.fixed,
+        onTap: (index) {
+          switch (index) {
+            case 0:
+              Get.offAllNamed('/home');
+              break;
+            case 1:
+              // Do nothing, already on history
+              break;
+            case 2:
+              Get.toNamed('/profile');
+              break;
+            case 3:
+              Get.toNamed('/rewards');
+              break;
+            case 4:
+              Get.toNamed('/account');
+              break;
+          }
+        },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
+            icon: Icon(Icons.home),
             label: '',
           ),
           BottomNavigationBarItem(
@@ -152,7 +193,10 @@ class HistoryView extends StatelessWidget {
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: CircleAvatar(
+              backgroundColor: Colors.black,
+              child: Icon(Icons.person, color: Colors.white),
+            ),
             label: '',
           ),
           BottomNavigationBarItem(
@@ -160,7 +204,7 @@ class HistoryView extends StatelessWidget {
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: Icon(Icons.person_outline),
             label: '',
           ),
         ],
