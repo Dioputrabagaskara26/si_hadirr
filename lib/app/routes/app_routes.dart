@@ -11,6 +11,7 @@ abstract class Routes {
   static const NEW_PASSWORD = _Paths.NEW_PASSWORD;
   static const HOME = _Paths.HOME;
   static const HISTORY = _Paths.HISTORY;
+  static const ABSENSI = _Paths.ABSENSI;
 }
 
 abstract class _Paths {
@@ -23,6 +24,7 @@ abstract class _Paths {
   static const NEW_PASSWORD = '/new-password';
   static const HOME = '/home';
   static const HISTORY = '/history';
+  static const ABSENSI = '/absensi';
 }
 
 abstract class AppRoutes {
@@ -35,4 +37,3 @@ abstract class AppRoutes {
   static const home = '/home';
   static const history = '/history';
 }
-
