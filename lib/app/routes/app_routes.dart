@@ -13,6 +13,8 @@ abstract class Routes {
   static const HISTORY = _Paths.HISTORY;
   static const ABSENSI = _Paths.ABSENSI;
   static const ATTENDANCE = _Paths.ATTENDANCE;
+  static const REWARDS = _Paths.REWARDS;
+  static const PROFILE = _Paths.PROFILE;
 }
 
 abstract class _Paths {
@@ -27,6 +29,8 @@ abstract class _Paths {
   static const HISTORY = '/history';
   static const ABSENSI = '/absensi';
   static const ATTENDANCE = '/attendance';
+  static const REWARDS = '/rewards';
+  static const PROFILE = '/profile';
 }
 
 abstract class AppRoutes {
@@ -39,4 +43,6 @@ abstract class AppRoutes {
   static const home = '/home';
   static const history = '/history';
   static const absensi = '/attendance';
+  static const rewards = '/rewards';
+  static const profile = '/profile';
 }
