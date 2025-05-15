@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-import '../modules/absensi/bindings/absensi_binding.dart';
-import '../modules/absensi/views/absensi_view.dart';
+import '../modules/attendance/bindings/attendance_binding.dart';
+import '../modules/attendance/views/attendance_view.dart';
 import '../modules/forgot_password/bindings/forgot_password_binding.dart';
 import '../modules/forgot_password/views/forgot_password_view.dart';
 import '../modules/history/bindings/history_binding.dart';
@@ -64,9 +64,9 @@ class AppPages {
       binding: HistoryBinding(),
     ),
     GetPage(
-      name: _Paths.ABSENSI,
-      page: () => const AbsensiView(),
-      binding: AbsensiBinding(),
+      name: _Paths.ATTENDANCE,
+      page: () => const AttendanceView(),
+      binding: AttendanceBinding(),
     ),
   ];
 }

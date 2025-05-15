@@ -12,6 +12,7 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const HISTORY = _Paths.HISTORY;
   static const ABSENSI = _Paths.ABSENSI;
+  static const ATTENDANCE = _Paths.ATTENDANCE;
 }
 
 abstract class _Paths {
@@ -25,6 +26,7 @@ abstract class _Paths {
   static const HOME = '/home';
   static const HISTORY = '/history';
   static const ABSENSI = '/absensi';
+  static const ATTENDANCE = '/attendance';
 }
 
 abstract class AppRoutes {
@@ -36,4 +38,5 @@ abstract class AppRoutes {
   static const newPassword = '/new-password';
   static const home = '/home';
   static const history = '/history';
+  static const absensi = '/attendance';
 }

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class AbsensiController extends GetxController {
-  //TODO: Implement AbsensiController
+class AttendanceController extends GetxController {
+  //TODO: Implement AttendanceController
 
   final count = 0.obs;
   @override

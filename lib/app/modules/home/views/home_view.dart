@@ -148,9 +148,44 @@ class HomeView extends GetView<HomeController> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildMenuItem(Icons.school, "Absensi", color: Colors.blue),
-          _buildMenuItem(Icons.history, "Riwayat", color: Colors.blue),
-          _buildMenuItem(Icons.card_giftcard, "Rewards", color: Colors.blue),
+          _buildMenuItem(
+            Icons.school,
+            "Absensi",
+            color: Colors.blue,
+            onTap: () => Get.toNamed('/attendance'),
+          ),
+          _buildMenuItem(
+            Icons.history,
+            "Riwayat",
+            color: Colors.blue,
+            onTap: () => Get.toNamed('/history'),
+          ),
+          _buildMenuItem(
+            Icons.card_giftcard,
+            "Rewards",
+            color: Colors.blue,
+            onTap: () => Get.toNamed('/rewards'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMenuItem(IconData icon, String label, {required Color color, VoidCallback? onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Icon(icon, color: color, size: 24),
+          ),
+          const SizedBox(height: 8),
+          Text(label, style: const TextStyle(color: Colors.white, fontSize: 12)),
         ],
       ),
     );
@@ -215,23 +250,6 @@ class HomeView extends GetView<HomeController> {
           const Text("• 26 Januari Hari Rusdi Halimawan", style: TextStyle(color: Colors.white, fontSize: 14)),
         ]),
       ),
-    );
-  }
-
-  Widget _buildMenuItem(IconData icon, String label, {required Color color}) {
-    return Column(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Icon(icon, color: color, size: 24),
-        ),
-        const SizedBox(height: 8),
-        Text(label, style: const TextStyle(color: Colors.white, fontSize: 12)),
-      ],
     );
   }
 
